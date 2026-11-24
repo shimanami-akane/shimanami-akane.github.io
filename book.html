@@ -283,7 +283,7 @@ document.getElementById('next').onclick=()=>{view=new Date(view.getFullYear(),vi
 
 // ===== 人数・到着時間 =====
 function opts(id,from,to,sel){const e=document.getElementById(id);e.innerHTML='';for(let i=from;i<=to;i++){const o=document.createElement('option');o.value=i;o.textContent=i;if(i===sel)o.selected=true;e.appendChild(o)}}
-opts('adult',1,6,2);opts('child',0,5,0);opts('infant',0,4,0);
+opts('adult',1,7,2);opts('child',0,6,0);opts('infant',0,4,0);
 (function(){const e=document.getElementById('time');e.innerHTML='';for(let h=15;h<=20;h++)for(const mm of['00','30']){if(h===20&&mm==='30')continue;const o=document.createElement('option');o.value=o.textContent=h+':'+mm;if(h===16&&mm==='00')o.selected=true;e.appendChild(o)}})();
 
 // ===== まとめ =====
