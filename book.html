@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ご予約｜しまなみのお宿 茜 尾道・向島 一棟貸しの宿</title>
+<meta name="description" content="しまなみのお宿 茜 の公式予約ページ。空いている日を選んで、そのままお申し込みいただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Shippori+Mincho:wght@500&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16110f;--deep:#8e2f33;--sand:#f5efe7;--line:#e6ddd1;--sub:#857b74;--busy:#c9c4bb;--err:#b3412f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter","Noto Sans JP",system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.85;-webkit-font-smoothing:antialiased;font-feature-settings:"palt"}
+a{color:inherit;text-decoration:none}
+html[lang="ja"] [data-en]{display:none!important}
+html[lang="en"] [data-ja]{display:none!important}
+header{position:sticky;top:0;z-index:50;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:18px;letter-spacing:.18em}
+.hd-r{display:flex;align-items:center;gap:16px;font-size:13px;font-weight:700}
+.lang{background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:11.5px;font-weight:700;cursor:pointer;color:var(--ink)}
+
+.wrap{max-width:1120px;margin:0 auto;padding:56px 24px 120px}
+.label{font-size:11px;font-weight:700;letter-spacing:.28em;color:var(--sub);text-transform:uppercase}
+h1{font-weight:900;font-size:clamp(28px,4.2vw,46px);line-height:1.35;margin-top:10px}
+.lead{margin-top:14px;color:#4a5255;font-size:15px}
+
+.grid{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;margin-top:48px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+
+.box{border:1px solid var(--line);border-radius:18px;padding:28px}
+.step{font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--deep);margin-bottom:14px}
+h2{font-size:20px;font-weight:700;margin-bottom:18px}
+
+/* カレンダー */
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cal-head button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px}
+.cal-head button:disabled{opacity:.3;cursor:default}
+.cals{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media(max-width:640px){.cals{grid-template-columns:1fr}.cals .m2{display:none}}
+.month h3{font-size:15px;font-weight:700;text-align:center;margin-bottom:8px}
+.dow,.days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.dow span{font-size:11px;color:var(--sub);padding:4px 0}
+.days button{aspect-ratio:1/1;border:none;background:none;font:inherit;font-size:14px;cursor:pointer;border-radius:50%;position:relative;color:var(--ink)}
+.days button:hover:not(:disabled){background:var(--sand)}
+.days button:disabled{color:var(--busy);cursor:default;text-decoration:line-through}
+.days button.past{text-decoration:none}
+.days button.in{background:#e3ecef;border-radius:0}
+.days button.start,.days button.end{background:var(--deep);color:#fff;border-radius:50%}
+.days button.today::after{content:"";position:absolute;left:50%;bottom:6px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--deep)}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--sub);margin-top:14px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.status{font-size:12.5px;color:var(--sub);margin-top:8px}
+
+/* 入力 */
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.row.one{grid-template-columns:1fr}
+.row.three{grid-template-columns:1fr 1fr 1fr}
+@media(max-width:640px){.row,.row.three{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+label small{font-weight:500;color:var(--sub);margin-left:6px}
+input,select,textarea{width:100%;font:inherit;font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--deep);outline-offset:-1px;border-color:transparent}
+textarea{min-height:110px;resize:vertical}
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.plan{border:1px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;display:block}
+.plan input{display:none}
+.plan b{display:block;font-size:15px}
+.plan span{font-size:13px;color:var(--sub)}
+.plan:has(input:checked){border-color:var(--deep);outline:2px solid var(--deep);outline-offset:-2px}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;margin-top:6px}
+.agree input{width:18px;height:18px;margin-top:4px;flex-shrink:0}
+.hp{position:absolute;left:-9999px}
+
+/* 右：まとめ */
+.sum{position:sticky;top:88px;background:var(--sand);border:none}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:14px}
+.sum dt{color:var(--sub)}
+.sum dd{text-align:right;font-weight:700}
+.total{border-top:1px solid var(--line);margin-top:18px;padding-top:18px;display:flex;justify-content:space-between;align-items:baseline}
+.total b{font-size:34px;font-weight:800;letter-spacing:-.02em}
+.note{font-size:12px;color:var(--sub);margin-top:8px}
+.submit{width:100%;margin-top:22px;background:var(--deep);color:#fff;border:none;border-radius:999px;padding:17px;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.04em}
+.submit:disabled{opacity:.4;cursor:default}
+.msg{margin-top:14px;font-size:13.5px;color:var(--err)}
+.info{font-size:13px;color:#4a5255;margin-top:22px;line-height:1.9}
+.info li{margin-left:1.2em}
+
+.done{display:none;text-align:center;padding:80px 24px}
+.done h2{font-size:clamp(24px,3.4vw,34px);font-weight:900}
+.done p{margin-top:14px;color:#4a5255}
+.done .no{font-size:13px;color:var(--sub);margin-top:18px}
+.done a{display:inline-block;margin-top:30px;border-bottom:1px solid currentColor;font-weight:700}
+body.sent .grid,body.sent .intro{display:none}
+body.sent .done{display:block}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo" style="font-family:'Shippori Mincho',serif">茜<small style="font-size:10px;letter-spacing:.3em;margin-left:8px">AKANE</small></a>
+  <div class="hd-r">
+    <a href="index.html"><span data-ja>← ホームへ</span><span data-en>← Home</span></a>
+    <button class="lang" id="langBtn">EN</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="intro">
+    <div class="label">Reservation</div>
+    <h1 data-ja>ご予約</h1><h1 data-en>Book your stay</h1>
+    <p class="lead" data-ja>空いている日を選んで、ご予約ください。お支払いはクレジットカードで、お支払いが済んだ時点でご予約の確定です。確定後すぐに、宿泊者名簿・チェックイン方法のご案内をメールでお送りします。</p>
+    <p class="lead" data-en>Choose your dates and book. Payment is by credit card, and your booking is confirmed once payment is complete. We will then email you the guest register and check-in guide.</p>
+  </div>
+
+  <div class="grid">
+    <form id="f" novalidate>
+      <!-- 1. 日にち -->
+      <div class="box">
+        <div class="step">STEP 1</div>
+        <h2 data-ja>日にちを選ぶ</h2><h2 data-en>Choose your dates</h2>
+        <div class="cal-head">
+          <button type="button" id="prev" aria-label="前の月">←</button>
+          <span class="status" id="calStatus"></span>
+          <button type="button" id="next" aria-label="次の月">→</button>
+        </div>
+        <div class="cals" id="cals"></div>
+        <div class="legend">
+          <span><i style="background:var(--deep)"></i><span data-ja>チェックイン・チェックアウト</span><span data-en>Check-in / Check-out</span></span>
+          <span><i style="background:var(--busy)"></i><span data-ja>空いていない日</span><span data-en>Not available</span></span>
+        </div>
+      </div>
+
+      <!-- 2. 人数とプラン -->
+      <div class="box" style="margin-top:20px">
+        <div class="step">STEP 2</div>
+        <h2 data-ja>人数とプラン</h2><h2 data-en>Guests &amp; plan</h2>
+        <div class="row three">
+          <div><label><span data-ja>大人</span><span data-en>Adults</span></label><select id="adult"></select></div>
+          <div><label><span data-ja>小学生</span><span data-en>Children (6–12)</span></label><select id="child"></select></div>
+          <div><label><span data-ja>幼児</span><span data-en>Infants</span></label><select id="infant"></select></div>
+        </div>
+        <p class="note" style="margin:-6px 0 16px" data-ja>大人と小学生で7名まで（幼児は数えません）。7名まで同じ料金です。</p>
+        <p class="note" style="margin:-6px 0 16px" data-en>Up to 6 adults and children in total (infants not counted). Same price for up to 6 guests.</p>
+        <div class="plans">
+          <label class="plan"><input type="radio" name="plan" value="normal" checked><b data-ja>一棟貸しプラン</b><b data-en>Whole house</b><span data-ja>¥40,000〜／泊・7名まで</span><span data-en>¥40,000~ / night · up to 7</span></label>
+        </div>
+        <p class="note" data-ja>スーパーは歩いて2分です。</p>
+        <p class="note" data-en>Supermarket is a 2-minute walk.</p>
+      </div>
+
+      <!-- 3. お客さま -->
+      <div class="box" style="margin-top:20px">
+        <div class="step">STEP 3</div>
+        <h2 data-ja>お客さまの情報</h2><h2 data-en>Your details</h2>
+        <div class="row one"><div><label><span data-ja>お名前</span><span data-en>Full name</span></label><input id="name" autocomplete="name" required></div></div>
+        <div class="row">
+          <div><label><span data-ja>メールアドレス</span><span data-en>Email</span></label><input id="email" type="email" autocomplete="email" required></div>
+          <div><label><span data-ja>電話番号</span><span data-en>Phone</span></label><input id="phone" type="tel" autocomplete="tel" required></div>
+        </div>
+        <div class="row">
+          <div><label><span data-ja>到着の予定</span><span data-en>Arrival time</span><small>15:00–20:00</small></label><select id="time"></select></div>
+          <div></div>
+        </div>
+        <div class="row one"><div><label><span data-ja>ご質問・ご要望</span><span data-en>Questions or requests</span><small data-ja>任意</small><small data-en>optional</small></label><textarea id="message"></textarea></div></div>
+        <input class="hp" id="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="agree"><input type="checkbox" id="agree">
+          <span data-ja>ハウスルール（室内禁煙・ペット不可・夜は静かに・外でのBBQ・花火禁止・ゴミの分別など）と、キャンセルポリシー（料金の欄の下に記載）に同意します。<a href="index.html#rules" target="_blank" style="text-decoration:underline">ルールを見る</a></span>
+          <span data-en>I agree to the house rules (no smoking indoors, no pets, quiet at night, no BBQ or fireworks outside, garbage separation) and the cancellation policy. <a href="index.html#rules" target="_blank" style="text-decoration:underline">See rules</a></span>
+        </label>
+      </div>
+    </form>
+
+    <!-- 右：まとめ -->
+    <aside class="box sum">
+      <div class="label">Summary</div>
+      <dl style="margin-top:16px">
+        <dt data-ja>チェックイン</dt><dt data-en>Check-in</dt><dd id="sCi">—</dd>
+        <dt data-ja>チェックアウト</dt><dt data-en>Check-out</dt><dd id="sCo">—</dd>
+        <dt data-ja>泊数</dt><dt data-en>Nights</dt><dd id="sN">—</dd>
+        <dt data-ja>人数</dt><dt data-en>Guests</dt><dd id="sG">—</dd>
+        <dt data-ja>プラン</dt><dt data-en>Plan</dt><dd id="sP">—</dd>
+      </dl>
+      <div class="total"><span data-ja>料金（合計）</span><span data-en>Total</span><b id="sT">—</b></div>
+      <button class="submit" id="send" type="button" disabled><span data-ja>カードで支払って予約する</span><span data-en>Pay by card and book</span></button>
+      <div class="msg" id="err"></div>
+      <ul class="info">
+        <li data-ja>チェックイン 15:00〜20:00／チェックアウト 10:00</li><li data-en>Check-in 15:00–20:00 / Check-out 10:00</li>
+        <li data-ja>お支払いはクレジットカード（Apple Pay・Google Pay も可）。カード番号は決済会社 Stripe の画面で入れていただき、当方には残りません</li><li data-en>Payment by credit card (Apple Pay / Google Pay accepted) on the secure Stripe page. We never see your card number</li>
+        <li data-ja>キャンセルと返金：宿泊日の7日前から宿泊料の30％、4日前から50％、前日・当日・ご連絡なしは100％のキャンセル料をいただき、残りを返金します（8日以上前のキャンセルは全額返金）。キャンセルはメールでご連絡ください。</li><li data-en>Cancellation &amp; refunds: from 7 days before the stay a 30% fee applies, from 4 days 50%, and 100% on the day before, the day of stay or for no-shows; the rest is refunded (full refund 8 or more days before). Please email us to cancel.</li>
+        <li data-ja>駐車場は2台まで</li><li data-en>Parking for up to 2 cars</li>
+        <li data-ja>お問い合わせ：<a href="mailto:yslegend0210@gmail.com" style="text-decoration:underline">yslegend0210@gmail.com</a></li><li data-en>Questions: <a href="mailto:yslegend0210@gmail.com" style="text-decoration:underline">yslegend0210@gmail.com</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <div class="done" id="done">
+    <div class="label">Thank you</div>
+    <h2 data-ja>ご予約ありがとうございます</h2><h2 data-en>Thank you for your booking</h2>
+    <p data-ja id="doneJa">お支払いを受け付け、ご予約が確定しました。宿泊者名簿・チェックイン方法のご案内をメールでお送りしました。メールが届かないときは、迷惑メールのフォルダもご確認ください。</p>
+    <p data-en id="doneEn">Your payment has been received and your booking is confirmed. We have emailed you the guest register and check-in guide. If you can't find it, please check your spam folder.</p>
+    <p class="no" id="doneNo"></p>
+    <a href="index.html"><span data-ja>ホームへ戻る</span><span data-en>Back to home</span></a>
+  </div>
+</main>
+
+<script>
+// ===== 設定 =====
+// Google Apps Script のウェブアプリの URL（予約の仕組み/コード.gs をデプロイした URL）
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbyFdVNJy7HUw7XqAzVCLxOBNu7jW-L_c-hpeqtCgmVz6K8xE9jxMXhAU39qf_244fRP/exec';   // Apps Script「茜 予約」（2026-11-24）
+const BASE = 40000, BBQ_PLUS = 0;   // 1泊・7名まで同じ（まめわざと同じ・2026-11-24）
+// 高い時期：[はじめ(月日), おわり(月日), 足す額]。おわりの日の夜も含む。年をまたぐのは 1230〜102
+const SEASON = [];   // 茜は高い時期の上乗せなし（まめわざは毎日 ¥40,000）
+function nightPrice(d, plan){ // d: Date（泊まる夜）
+  const md=(d.getMonth()+1)*100+d.getDate(); let plus=0;
+  for(const [f,t,v] of SEASON){ const hit=f<=t?(md>=f&&md<=t):(md>=f||md<=t); if(hit&&v>plus)plus=v; }
+  return BASE+plus+(plan==='bbq'?BBQ_PLUS:0);
+}
+function totalPrice(plan){ if(!ci||!co)return 0; let t=0; const d=parse(ci); while(ymd(d)<co){t+=nightPrice(d,plan);d.setDate(d.getDate()+1)} return t }
+const MAX_GUESTS = 7;
+const MONTHS_AHEAD = 12;   // 何か月先まで予約できるか
+
+// ===== 言語 =====
+const html=document.documentElement, langBtn=document.getElementById('langBtn');
+function setLang(l){html.lang=l;langBtn.textContent=l==='ja'?'EN':'日本語';try{localStorage.setItem('lang',l)}catch(e){};render();summary()}
+langBtn.onclick=()=>setLang(html.lang==='ja'?'en':'ja');
+const T=(ja,en)=>html.lang==='en'?en:ja;
+
+// ===== 日付 =====
+const pad=n=>String(n).padStart(2,'0');
+const ymd=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const parse=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const today=new Date();today.setHours(0,0,0,0);
+const lastDay=new Date(today.getFullYear(),today.getMonth()+MONTHS_AHEAD+1,0);
+let busy=new Set(), ci=null, co=null;
+let view=new Date(today.getFullYear(),today.getMonth(),1);
+
+function fmt(s){if(!s)return'—';const d=parse(s);const w=T(['日','月','火','水','木','金','土'][d.getDay()],['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()]);
+  return html.lang==='en'?`${w}, ${d.toLocaleString('en',{month:'short'})} ${d.getDate()}, ${d.getFullYear()}`:`${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${w}）`}
+
+// ci から次の「空いていない夜」までが、チェックアウトに選べる日
+function maxCheckout(from){const d=parse(from);for(let i=0;i<60;i++){d.setDate(d.getDate()+1);if(busy.has(ymd(d))||d>lastDay)return ymd(d)}return ymd(d)}
+
+function monthEl(base){
+  const y=base.getFullYear(),m=base.getMonth();
+  const wrap=document.createElement('div');wrap.className='month';
+  wrap.innerHTML=`<h3>${html.lang==='en'?base.toLocaleString('en',{month:'long',year:'numeric'}):y+'年'+(m+1)+'月'}</h3>`+
+    `<div class="dow">${(html.lang==='en'?['S','M','T','W','T','F','S']:['日','月','火','水','木','金','土']).map(x=>`<span>${x}</span>`).join('')}</div>`;
+  const days=document.createElement('div');days.className='days';
+  for(let i=0;i<new Date(y,m,1).getDay();i++)days.appendChild(document.createElement('span'));
+  const lim=ci&&!co?maxCheckout(ci):null;
+  for(let d=1;d<=new Date(y,m+1,0).getDate();d++){
+    const dt=new Date(y,m,d),s=ymd(dt),b=document.createElement('button');b.type='button';b.textContent=d;b.dataset.d=s;
+    const past=dt<today, isBusy=busy.has(s);
+    if(ci&&!co&&s>ci){ // チェックアウトを選ぶとき：次の埋まっている夜の朝まで選べる
+      b.disabled=s>lim;
+    }else{
+      b.disabled=isBusy||dt>lastDay;
+    }
+    if(past){b.disabled=true;b.classList.add('past')}
+    if(s===ymd(today))b.classList.add('today');
+    if(s===ci)b.classList.add('start');
+    if(s===co)b.classList.add('end');
+    if(ci&&co&&s>ci&&s<co)b.classList.add('in');
+    b.onclick=()=>pick(s);
+    days.appendChild(b);
+  }
+  wrap.appendChild(days);return wrap;
+}
+function render(){
+  const c=document.getElementById('cals');c.innerHTML='';
+  const m1=monthEl(view);const n=new Date(view.getFullYear(),view.getMonth()+1,1);const m2=monthEl(n);m2.classList.add('m2');
+  c.append(m1,m2);
+  document.getElementById('prev').disabled=view<=new Date(today.getFullYear(),today.getMonth(),1);
+  document.getElementById('next').disabled=n>=new Date(lastDay.getFullYear(),lastDay.getMonth(),1);
+}
+function pick(s){
+  if(!ci||co||s<=ci){ci=s;co=null}
+  else co=s;
+  render();summary();
+}
+document.getElementById('prev').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()-1,1);render()};
+document.getElementById('next').onclick=()=>{view=new Date(view.getFullYear(),view.getMonth()+1,1);render()};
+
+// ===== 人数・到着時間 =====
+function opts(id,from,to,sel){const e=document.getElementById(id);e.innerHTML='';for(let i=from;i<=to;i++){const o=document.createElement('option');o.value=i;o.textContent=i;if(i===sel)o.selected=true;e.appendChild(o)}}
+opts('adult',1,6,2);opts('child',0,5,0);opts('infant',0,4,0);
+(function(){const e=document.getElementById('time');e.innerHTML='';for(let h=15;h<=20;h++)for(const mm of['00','30']){if(h===20&&mm==='30')continue;const o=document.createElement('option');o.value=o.textContent=h+':'+mm;if(h===16&&mm==='00')o.selected=true;e.appendChild(o)}})();
+
+// ===== まとめ =====
+const $=id=>document.getElementById(id);
+function nights(){return ci&&co?Math.round((parse(co)-parse(ci))/86400000):0}
+function plan(){return document.querySelector('input[name=plan]:checked').value}
+function summary(){
+  const a=+$('adult').value,c=+$('child').value,i=+$('infant').value,n=nights();
+  $('sCi').textContent=fmt(ci);$('sCo').textContent=fmt(co);
+  $('sN').textContent=n?T(n+'泊',n+(n>1?' nights':' night')):'—';
+  $('sG').textContent=T(`大人${a}・小学生${c}・幼児${i}`,`${a} adult${a>1?'s':''}, ${c} child, ${i} infant`);
+  $('sP').textContent=T('一棟貸しプラン','Whole house');
+  $('sT').textContent=n?'¥'+totalPrice(plan()).toLocaleString():'—';
+  let e='';
+  if(a+c>MAX_GUESTS)e=T('大人と小学生で7名までです。','Up to 7 adults and children in total.');
+  $('err').textContent=e;
+  $('send').disabled=!(n&&!e&&$('agree').checked);
+}
+['adult','child','infant','agree'].forEach(id=>$(id).addEventListener('change',summary));
+document.querySelectorAll('input[name=plan]').forEach(r=>r.addEventListener('change',summary));
+
+// ===== 空いていない日を読む =====
+async function loadBusy(){
+  if(!GAS_URL){$('calStatus').textContent=T('（見本：空き状況はまだつながっていません）','(Preview: availability not connected yet)');return}
+  $('calStatus').textContent=T('空き状況を読み込み中…','Loading availability…');
+  try{
+    const r=await fetch(GAS_URL+'?a=busy');const j=await r.json();
+    busy=new Set(j.busy||[]);$('calStatus').textContent='';
+  }catch(e){$('calStatus').textContent=T('空き状況が読み込めませんでした。お手数ですがメールでお問い合わせください。','Could not load availability. Please email us.')}
+  render();
+}
+
+// ===== 送る =====
+$('send').onclick=async()=>{
+  const d={checkin:ci,checkout:co,plan:plan(),adult:$('adult').value,child:$('child').value,infant:$('infant').value,
+    time:$('time').value,name:$('name').value.trim(),email:$('email').value.trim(),phone:$('phone').value.trim(),
+    message:$('message').value.trim(),website:$('website').value,lang:html.lang,back:location.origin+location.pathname};
+  if(!d.name||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)||!d.phone){$('err').textContent=T('お名前・メールアドレス・電話番号を入れてください。','Please enter your name, email and phone.');return}
+  if(!GAS_URL){$('err').textContent=T('見本のため、まだ送れません。','This is a preview — sending is not connected yet.');return}
+  $('send').disabled=true;$('err').textContent=T('送っています…','Sending…');
+  try{
+    const r=await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)});
+    const j=await r.json();
+    if(j.ok&&j.url){$('err').textContent=T('お支払いの画面へ移ります…','Opening the payment page…');location.href=j.url;return}
+    const m={taken:T('申し訳ありません。その日は先に予約が入りました。別の日をお選びください。','Sorry, those dates were just booked. Please choose other dates.'),
+      dates:T('日にちを選び直してください。','Please choose your dates again.'),guests:T('人数を確かめてください。','Please check the number of guests.'),
+      contact:T('お名前・メールアドレス・電話番号を確かめてください。','Please check your name, email and phone.')};
+    $('err').textContent=m[j.error]||T('送れませんでした。時間をおいてもう一度お試しください。','Could not send. Please try again later.');
+    if(j.error==='taken'){ci=co=null;await loadBusy();summary()}
+  }catch(e){$('err').textContent=T('送れませんでした。時間をおいてもう一度お試しください。','Could not send. Please try again later.')}
+  summary();
+};
+
+// ===== カードの画面から戻ったとき =====
+async function afterStripe(){
+  const q=new URLSearchParams(location.search), sid=q.get('paid'), no=q.get('cancel');
+  if(!sid&&!no)return;
+  history.replaceState(null,'',location.pathname);
+  if(sid){
+    document.body.classList.add('sent');
+    const setMsg=(ja,en)=>{$('doneJa').textContent=ja;$('doneEn').textContent=en};
+    setMsg('お支払いを確かめています…','Checking your payment…');
+    for(let i=0;i<5;i++){
+      try{const j=await (await fetch(GAS_URL+'?a=paid&cs='+encodeURIComponent(sid))).json();
+        if(j.ok&&j.status==='paid'){setMsg('お支払いを受け付け、ご予約が確定しました。宿泊者名簿・チェックイン方法のご案内をメールでお送りしました。メールが届かないときは、迷惑メールのフォルダもご確認ください。',"Your payment has been received and your booking is confirmed. We have emailed you the guest register and check-in guide. If you can't find it, please check your spam folder.");$('doneNo').textContent=T('受付番号：','Booking No.: ')+j.no;return}
+      }catch(e){}
+      await new Promise(r=>setTimeout(r,3000));
+    }
+    setMsg('お支払いの確認に時間がかかっています。確定するとメールが届きます。しばらく届かないときは、お手数ですがメールでお問い合わせください。','Confirming your payment is taking a little longer. You will receive an email once confirmed. If it does not arrive, please email us.');
+    return;
+  }
+  try{await fetch(GAS_URL+'?a=cancel&no='+encodeURIComponent(no)+'&t='+encodeURIComponent(q.get('t')||''))}catch(e){}
+  $('err').textContent=T('お支払いが済んでいないため、ご予約はまだ入っていません。もう一度お選びください。','Payment was not completed, so no booking was made. Please try again.');
+  await loadBusy();
+  return true;
+}
+
+// ===== はじめ =====
+let saved=null;try{saved=localStorage.getItem('lang')}catch(e){}
+setLang(saved||(/^ja/i.test(navigator.language)?'ja':'en'));
+afterStripe().then(done=>{if(!done)loadBusy()});
+</script>
+</body>
+</html>
